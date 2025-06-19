@@ -1,0 +1,290 @@
+insert into area (nombre, status) values ("corte", true);
+insert into area (nombre, status) values ("lavado", true);
+insert into area (nombre, status) values ("marcado", true);
+
+-- 1.- ROLES (LOS ROLES QUE EXISTEN EN EL SISTEMA)
+insert into rol (nombre, status) values ("gerente general", true);
+insert into rol (nombre, status) values ("almacenista", true);
+insert into rol (nombre, status) values ("accionista", true);
+insert into rol (nombre, status) values ("supervisor de produccion", true);
+insert into rol (nombre, status) values ("supervisor de calidad", true);
+insert into rol (nombre, status) values ("inspector", true);
+insert into rol (nombre, status) values ("analista", true);
+insert into rol (nombre, status) values ("tomador de horarios", true);
+insert into rol (nombre, status) values ("mantenimiento", true);
+insert into rol (nombre, status) values ("contador", true);
+insert into rol (nombre, status) values ("recursos humanos", true);
+insert into rol (nombre, status) values ("operario", true);
+
+
+-- Crea el domicilio para las personas
+INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(1, '26 de Marzo', 12, 1, 'Temextla', 72890);
+INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(2, '05 de Mayo', 10, 2, 'Tatzecuala', 73690);
+ INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(3, '16 de Septiembre', 23, 1, 'San Miguel', 71690);
+  INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(4, '24 de Febrero', 10, 3, 'Zacapoaxtla', 73680);
+ INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(5, '1 de Febrero', 12, 13, 'Zacapoaxtla', 73680);
+  INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(6, '26 de Febrero', 12, 13, 'Zacapoaxtla', 73680);
+ INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(7, '28 de Febrero', 14, 16, 'Zacapoaxtla', 73680);
+ INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(8, '27 de Febrero', 19, 23, 'Zacapoaxtla', 73680);
+ INSERT INTO domicilio (id, calle, no_ext, no_int, colonia, cod_pos)
+ VALUES(9, '28 de Febrero', 10, 44, 'Zacapoaxtla', 73680);
+
+-- 2.- CREAR A BRANDON (ES UNA PERSONA (persona es una generalizacion))
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(1, 'Brandon', 'Solano', 'Moreno', 'Masculino', 'BUSM020303MPLBTLA', 'BUSM020303', '1234567891011', '2023-10-30', 1234567890, '2002-09-12', 'Mexicana', 'Familia', 1, 1);
+-- CREAR A PERSONA DULCE 
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(2, 'Dulce', 'Cabrera', 'Teotan', 'Femenino', 'CATD020508MPLBTLA4', 'CATD020508UYT', '1234567891011', '2023-11-02', 1234567890, '2002-04-02', 'Mexicana', 'Familia', 2, 1);
+-- CREAR A PERSONA ROBERTO
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(3, 'Roberto', 'Carreon', 'Romero', 'Masculino', 'CATD020508MPLBTLA4', 'CATD020508UYT', '1234567891011', '2023-11-02', 1234567890, '2002-04-02', 'Mexicana', 'Familia', 3, 1);
+-- CREAR A PERSONA GUSTAVO
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(4, 'Gustavo', 'Aguilar', 'Martinez', 'Masculino', 'RATD020508MPLBTLA5', 'CATD020508UYF', '1234567891011', '2023-11-20', 1234567890, '2002-01-23', 'Mexicana', 'Familia', 4, 1);
+-- CREAR A PERSONA ERIK
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(5, 'Erik', 'Lima', 'Oropeza', 'Masculino', 'RATD020508MPLBTLA6', 'CATD025508UYF', '1234567891011', '2023-12-02', 1234567890, '2002-06-18', 'Mexicana', 'Familia', 5, 1);
+-- CREAR A PERSONA LILI 
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(6, 'Lili', 'Lopez', 'Ortigoza', 'Femenino', 'RATD020508MPLBTLA7', 'CATD025508UYF', '1234567891011', '2023-12-02', 1234567890, '2002-06-18', 'Mexicana', 'Familia', 6, 1);
+-- CREAR A PERSONA Jose 
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(7, 'Jose', 'Sanchez', 'Caicedo', 'Masculino', 'RATD020508MPLBTLA9', 'CATD025508UYD', '1234567891011', '2023-12-02', 1234567890, '2002-06-18', 'Mexicana', 'Familia', 7, 1);
+-- CREAR A PERSONA Claudia
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(8, 'Caludia', 'Gutierrez', 'Castro', 'Femenino', 'RATD020508MPLBTL99', 'CATD025538UYD', '1234567891011', '2023-12-02', 1234567890, '2002-06-18', 'Mexicana', 'Familia', 8, 1);
+-- CREAR A PERSONA Luis
+INSERT INTO persona (id, nombre, apellido_paterno, apellido_materno, genero, curp, rfc, nss, fechaContrato, telefono, fechaNacimiento, nacionalidad, viveCon, idDomicilio, status) VALUES
+(9, 'Luis', 'Lozada', 'Castillo', 'Masculino', 'RATD020508MPLBTL99', 'CATD025538UYD', '1234567891011', '2023-12-02', 1234567890, '2002-06-18', 'Mexicana', 'Familia', 9, 1);
+
+-- Creacion Operacion_corte
+insert into operacion_corte(id,nombre,codigo,tiempo_estandar,costo,jornadaLaboral,piezasprod,produccion_planeada)
+value(1,"Corte","2X200A",0.50,1.20,9.5,'23',2000);
+insert into operacion_corte(id,nombre,codigo,tiempo_estandar,costo,jornadaLaboral,piezasprod,produccion_planeada)
+value(2,"Manufactura","2X200B",0.51,2.80,9.5,'45',8000);
+insert into operacion_corte(id,nombre,codigo,tiempo_estandar,costo,jornadaLaboral,piezasprod,produccion_planeada)
+value(3,"Lijado","2X200C",0.49,2.30,9.5,'13',10000);
+insert into operacion_corte(id,nombre,codigo,tiempo_estandar,costo,jornadaLaboral,piezasprod,produccion_planeada)
+value(4,"Lavado","2X200D",0.48,1.80,9.5,'40',200);
+insert into operacion_corte(id,nombre,codigo,tiempo_estandar,costo,jornadaLaboral,piezasprod,produccion_planeada)
+value(5,"Terminado","2X200F",0.46,3.10,9.5,'36',9000);
+
+-- Creacion Corte
+insert into corte(id,nombre,costo,id_operacion_corte)
+value(1,"2X304",0.60,1);
+insert into corte(id,nombre,costo,id_operacion_corte)
+value(2,"4X305",1.90,2);
+
+-- Tabla puente de Operacion corte con corte
+insert into corte_ope(id,id_operacion_corte,id_corte)
+value(1,1,1);
+insert into corte_ope(id,id_operacion_corte,id_corte)
+value(2,2,2);
+
+-- CREAR UN USUARIO PARA PERSONAS
+-- USUARIO 1 PARA PERSONA 1 (BRANDON) GERENTE GENERAL
+insert into usuario (id, usuario, password, correo,persona_id,rol_nombre_activo) 
+values (1,"gerente022","abrir123","brandonmoreno2030@gmail.com",1,"gerente general");
+-- USUARIO 1 PARA PERSONA 2 (DULCE) ALMACENISTA
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (2,"almacenista022","abrir123","cabreradulce022@gmail.com",2,"almacenista");
+-- USUARIO 1 PARA PERSONA 3 (ROBERTO) ACCIONISTA
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (3,"accionista022","abrir123","roberto022@gmail.com",3,"accionista"); 
+-- USUARIO 1 PARA PERSONA 4 (GUSTAVO) SUPERVISOR DE PRODUCCION
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (4,"supervisorprod022","abrir123","gustavo022@gmail.com",4,"supervisor de produccion");
+-- USUARIO 1 PARA PERSONA 5 (ERIK) SUPERVISOR DE CALIDAD
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (5,"supervisorcali022","abrir123","erik022@gmail.com",5,"supervisor de calidad");
+-- USUARIO 2 PARA PERSONA 1 (BRANDON) INSPECTOR
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (6,"inspector022","abrir123","brandonmoreno2030@gmail.com",1,"inspector");
+-- USUARIO 2 PARA PERSONA 2 (DULCE) ANALISTA
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (7,"analista022","abrir123","cabreradulce022@gmail.com",2,"analista");
+-- USUARIO 2 PARA PERSONA 3 (ROBERTO) TOMADOR DE HORARIOS
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (8,"tomadorhora022","abrir123","roberto022@gmail.com",3,"tomador de horarios"); 
+-- USUARIO 2 PARA PERSONA 4 (GUSTAVO) MANTENIMIENTO
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (9,"mantenimiento022","abrir123","gustavo022@gmail.com",4,"mantenimiento");
+-- USUARIO 2 PARA PERSONA 5 (ERIK) CONTADOR
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (10,"contador022","abrir123","erik022@gmail.com",5,"contador");
+-- USUARIO 3 PARA PERSONA 5 (ERIK) OPERARIO 1
+insert into usuario (id, usuario, password, correo,persona_id,rol_nombre_activo) 
+values (11,"operario022","abrir123","erik022@gmail.com",5,"operario");
+-- USUARIO 1 PARA PERSONA 6 (LILI) OPERARIO 2
+insert into usuario (id, usuario, password, correo,persona_id,rol_nombre_activo) 
+values (12,"operario023","abrir123","Lili1@gmail.com",6,"operario");
+-- USUARIO 1 PARA PERSONA 7 (JOSE) OPERARIO 3
+insert into usuario (id, usuario, password, correo,persona_id,rol_nombre_activo) 
+values (13,"operario024","abrir123","jose@gmail.com",7,"operario");
+-- USUARIO 1 PARA PERSONA 8 (Claudia) OPERARIO 4
+insert into usuario (id, usuario, password, correo,persona_id,rol_nombre_activo) 
+values (14,"operario025","abrir123","claudia@gmail.com",8,"operario");
+-- USUARIO 1 PARA PERSONA 9 (Luis) recursos humanos
+insert into usuario (id, usuario, password, correo,persona_id,rol_nombre_activo) 
+values (15,"recursoshumanos022","abrir123","luisito@gmail.com",9,"recursos humanos");
+-- USUARIO 3 PARA PERSONA 2 (DULCE) OPERARIO 5
+insert into usuario (id, usuario, password, correo,persona_id, rol_nombre_activo) 
+values (16,"operario026","abrir123","cabreradulce022@gmail.com",2,"operario");
+-- TABLA PUENTE ROL CON USUARIOS 
+-- ROL GERENTE A BRANDON
+insert into rol_usu (rol_id, usuario_id) 
+values (1,1);
+-- ROL ALMACENISTA A DULCE
+insert into rol_usu (rol_id, usuario_id) 
+values (2,2);
+-- ROL ACCIONISTA A ROBERTO
+insert into rol_usu (rol_id, usuario_id) 
+values (3,3);
+-- ROL SUPERVISOR DE PRODUCCION A GUSTAVO
+insert into rol_usu (rol_id, usuario_id) 
+values (4,4);
+-- ROL SUPERVISOR DE CALIDAD A ERIK
+insert into rol_usu (rol_id, usuario_id) 
+values (5,5);
+-- ROL INSPECTOR A BRANDON
+insert into rol_usu (rol_id, usuario_id) 
+values (6,6);
+-- ROL ANALISTA A DULCE
+insert into rol_usu (rol_id, usuario_id) 
+values (7,7);
+-- ROL TOMADOR DE HORARIOS A ROBERTO
+insert into rol_usu (rol_id, usuario_id) 
+values (8,8);
+-- ROL MANTENIMIENTO A GUSTAVO
+insert into rol_usu (rol_id, usuario_id) 
+values (9,9);
+-- ROL CONTADOR A ERIK
+insert into rol_usu (rol_id, usuario_id) 
+values (10,10);
+-- ROL OPERARIO 1 A ERIK
+insert into rol_usu (rol_id, usuario_id) 
+values (12,11);
+-- ROL OPERARIO 2 A LILI
+insert into rol_usu (rol_id, usuario_id) 
+values (12,12);
+-- ROL OPERARIO 3 A LILI
+insert into rol_usu (rol_id, usuario_id) 
+values (12,13);
+-- ROL OPERARIO 4 A LILI
+insert into rol_usu (rol_id, usuario_id) 
+values (12,14);
+-- ROL RECURSOS HUMANOS A LUIS	
+insert into rol_usu (rol_id, usuario_id) 
+values (11,15);
+-- ROL OPERARIO 5 A dulce
+insert into rol_usu (rol_id, usuario_id) 
+values (12,16);
+
+-- CREAR A BRANDON EN LA ESPECIALIZCION GERENTE
+insert into gerente_general(id, folio,persona_id) 
+values (1, "001100",1);
+
+-- CREAR ESPECIALIZACION ALMACENISTA A DULCE
+insert into almacenista (id, folio,persona_id) 
+values (1, "002200",2);
+
+-- CREAR ESPECIALIZACION ACCIONISTA A ROBERTO
+insert into accionista (id, folio,persona_id) 
+values (1, "003300",3);
+
+-- CREAR ESPECIALIZACION SUPERVISOR DE PRODUCCION A GUSTAVO
+insert into supervisor_produccion (id, folio,persona_id) 
+values (1, "005500",4);
+
+-- CREAR ESPECIALIZACION OPERARIO
+-- OPERARIO 1 ERIK
+insert into operario (id, folio, area_id,persona_id,asignar_operacion) 
+values (1, "004400", 1,5,1);
+-- OPERARIO 2 LILI
+insert into operario (id, folio, area_id,persona_id,asignar_operacion) 
+values (2, "005500", 1,6,2);
+-- OPERARIO 3 JOSE
+insert into operario (id, folio, area_id,persona_id,asignar_operacion) 
+values (3, "006600", 1,7,3);
+-- OPERARIO 4 claudia
+insert into operario (id, folio, area_id,persona_id,asignar_operacion) 
+values (4, "007700", 1,8,4);
+-- OPERARIO 4 claudia
+insert into operario (id, folio, area_id,persona_id,asignar_operacion) 
+values (5, "008800", 1,2,5);
+
+-- CREAR ESPECIALIZACION SUPERVISOR DE CALIDAD A ERIK
+insert into supervisor_calidad (id, folio,persona_id) 
+values (1, "006600",5);
+
+-- CREAR ESPECIALIZACION INSPECTOR A BRANDON
+insert into inspector (id, folio,persona_id) 
+values (1, "007700",1);
+
+-- CREAR ESPECIALIZACION ANALISTA A DULCE
+insert into analista (id, folio,persona_id) 
+values (1, "008800",2);
+
+-- CREAR ESPECIALIZACION TOMADOR DE HORARIOS A ROBERTO
+insert into tomador_tiempos (id, folio,persona_id) 
+values (1, "009900",3);
+
+-- CREAR ESPECIALIZACION MANTENIMIENTO A GUSTAVO
+insert into mantenimiento (id, folio,persona_id) 
+values (1, "001000",4);
+
+-- CREAR ESPECIALIZACION CONTADOR A ERIK
+insert into contador (id, folio,persona_id) 
+values (1, "001100",5);
+
+-- CREAR ESPECIALIZACION RECURSOS HUMANOS A LUIS
+insert into recursos_humanos (id, folio,persona_id) 
+values (1, "001100",9);
+
+-- Agregar Categoria de materia prima
+insert into categoria_mp (id,nombre, ubicacion) 
+values (1,"Tela","B8");
+
+insert into categoria_mp (id,nombre, ubicacion) 
+values (2,"Grapas","C2");
+
+
+-- Agregar Materia prima
+insert into materia_prima (id,folio,nombre,cantidad,unidad,categoria_id,caducidad,tiempo_entrega) 
+values (1,"1BTN","Boton",800,"Pieza",1,'2024-05-08','2023-12-24');
+
+insert into materia_prima (id,folio,nombre,cantidad,unidad,categoria_id,caducidad,tiempo_entrega) 
+values (2,"1GRP","Grapas",1000,"Pieza",2,'2024-05-08','2023-12-24');
+
+-- Agregar Categoria de maquinaria
+insert into categoria_maquinaria (id,nombre, ubicacion) 
+values (1,"Cortadora","C1");
+
+-- Agregar Maquinaria
+insert into maquinaria (id,folio,modelo,status,categoria_id) 
+values (1,"20MQ","CASIO XX21",1,1);
+
+-- Agregar salarios
+insert into salario (id,por_dia,con_incentivos,final,usuario_id) 
+values (1,80.70,100.70,100.70,11);
+insert into salario (id,por_dia,con_incentivos,final,usuario_id) 
+values (2,50.30,60.30,60.30,12);
+insert into salario (id,por_dia,con_incentivos,final,usuario_id) 
+values (3,75.80,90.30,90.30,13);
+insert into salario (id,por_dia,con_incentivos,final,usuario_id) 
+values (4,95.80,100.80,100.80,14);
+insert into salario (id,por_dia,con_incentivos,final,usuario_id) 
+values (5,95.80,100.80,100.80,5);
+
+INSERT INTO readTimeOperaYNumOperarios (total_operarios, total_tiempo_estandar)
+SELECT
+   (SELECT COUNT(*) FROM operario) AS total_operarios,
+   (SELECT SUM(tiempo_estandar) FROM operacion_corte) AS total_tiempo_estandar;

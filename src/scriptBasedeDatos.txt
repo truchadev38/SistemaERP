@@ -1,0 +1,284 @@
+drop database if exists alertSystemDb;
+create database alertSystemDb;
+use alertSystemDb;
+
+create table rol(
+	id int auto_increment primary key not null,
+	nombre varchar(30) unique key,
+	status boolean
+);
+
+create table area(
+	id int auto_increment primary key not null,
+	nombre varchar(30) unique key,
+    status boolean
+);
+create table domicilio(
+id int auto_increment primary key,
+ calle varchar(50),
+ no_ext int(20),
+ no_int int(20),
+ colonia varchar(40),
+ cod_pos int(20)
+);
+
+create table operacion_corte(
+id int auto_increment primary key,
+nombre varchar(30),
+codigo varchar(30),
+tiempo_estandar double, -- '02:30:00' HH:MM:SS
+costo double, -- costo de operacion 
+piezasprod varchar(20),
+jornadaLaboral double,
+porcentaje_incremento double,
+-- produccion_real int,
+produccion_planeada int
+);
+
+CREATE TABLE persona (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    id_rol INT,
+    fecha_actual DATE,
+    sueldo_mensual_deseado DECIMAL(10,2),
+    sueldo_mensual_autorizado DECIMAL(10,2),
+    fechaContrato DATE,
+    apellido_paterno VARCHAR(50),
+    apellido_materno VARCHAR(50),
+    nombre VARCHAR(50),
+    edad INT,
+    idDomicilio INT,  -- Esta columna es la que se relaciona con la tabla domicilio
+    telefono VARCHAR(15),
+    genero VARCHAR(10),
+    estadoDomicilio VARCHAR(50),
+    estadoNacimiento VARCHAR(50),
+    fechaNacimiento DATE,
+    nacionalidad VARCHAR(50),
+    viveCon VARCHAR(255),
+    dependeDe VARCHAR(255),
+    estadoCivil VARCHAR(20),
+    curp VARCHAR(18),
+    afore VARCHAR(20),
+    rfc VARCHAR(13),
+    correo VARCHAR(50),
+    licenciaCompleta VARCHAR(50),
+    opcionCartilla VARCHAR(50),
+    opcionPasaporte VARCHAR(50),
+    nss VARCHAR(15),
+    docExtranjero VARCHAR(50),
+    padreNombre VARCHAR(50),
+    statusPadre VARCHAR(20),
+    padreDomicilio VARCHAR(255),
+    padreOcupacion VARCHAR(50),
+    madreNombre VARCHAR(50),
+    statusMadre VARCHAR(20),
+    madreDomicilio VARCHAR(255),
+    madreOcupacion VARCHAR(50),
+    conyugeNombre VARCHAR(50),
+    statusConyuge VARCHAR(20),
+    conyugeDomicilio VARCHAR(255),
+    conyugeOcupacion VARCHAR(50),
+    idiomasDominados VARCHAR(255),
+    funcionesDominadas TEXT,
+    maquinasDominadas TEXT,
+    otrosDominios TEXT,
+    tiempoUltimo VARCHAR(50),
+    nombreUltimo VARCHAR(50),
+    domicilioUltimo VARCHAR(255),
+    telefonoUltimo VARCHAR(15),
+    puestoUltimo VARCHAR(50),
+    sueldoUltimo DECIMAL(10,2),
+    motivosUltimo TEXT,
+    jefeUltimo VARCHAR(50),
+    actividadesActual TEXT,
+    status tinyint,
+    FOREIGN KEY (id_rol) REFERENCES rol(id),
+    FOREIGN KEY (idDomicilio) REFERENCES domicilio(id)
+);
+
+create table usuario(
+	id int primary key not null,
+	usuario varchar(20),
+	password varchar(10),
+	correo varchar(40),
+    persona_id int,
+    rol_nombre_activo varchar(30) references rol (nombre),
+    foreign key(persona_id) references persona(id)
+);
+
+create table rol_usu(
+	id int auto_increment primary key not null,
+	rol_id int not null,
+    usuario_id int not null,
+    unique key(rol_id, usuario_id),
+    foreign key(rol_id) references rol (id),
+    foreign key(usuario_id) references usuario (id)
+);
+
+create table gerente_general(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table almacenista(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table accionista(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table operario( 
+	id int not null primary key,
+	folio varchar(15),
+    area_id int not null,
+    persona_id int,
+    asignar_operacion int,
+    foreign key(area_id) references area (id),
+	foreign key(persona_id) references persona(id),
+    FOREIGN KEY (asignar_operacion) REFERENCES operacion_corte(id)
+);
+
+
+create table supervisor_produccion(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table supervisor_calidad(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table inspector(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table analista(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table tomador_tiempos(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table mantenimiento(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table contador(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+create table recursos_humanos(
+	id int not null primary key,
+	folio varchar(15),
+    persona_id int,
+	foreign key(persona_id) references persona(id)
+);
+
+
+create table categoria_mp(
+	id int auto_increment primary key,
+	nombre varchar(15),
+    ubicacion varchar(20)
+);
+
+CREATE TABLE materia_prima (
+	id int auto_increment primary key,
+	folio varchar(15),
+    nombre varchar(15),
+    cantidad int(11),
+    unidad varchar(25),
+    categoria_id int,
+    caducidad date,
+    tiempo_entrega date,
+    FOREIGN KEY (categoria_id) REFERENCES categoria_mp(id)
+);
+create table categoria_maquinaria(
+	id int auto_increment primary key,
+	nombre varchar(15),
+    ubicacion varchar(20)
+);
+Create table maquinaria(
+	id int auto_increment primary key,
+	folio varchar(15),
+    modelo varchar(15), 
+  	status boolean,
+    categoria_id int,
+	FOREIGN KEY (categoria_id) REFERENCES categoria_maquinaria(id)
+);
+
+create table salario(  -- preguntar como va a ser su salario cuando ya esta aceptado
+	id int auto_increment primary key,
+	por_dia double, 
+    con_incentivos double ,
+    final double,
+	usuario_id int,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+create table corte(
+	id int auto_increment primary key,
+	nombre varchar(30),
+	costo double, -- costo de prenda
+	id_operacion_corte int,
+	FOREIGN KEY (id_operacion_corte) REFERENCES operacion_corte(id)
+);
+
+CREATE TABLE corte_ope (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_operacion_corte int,
+    id_corte int,
+    FOREIGN KEY (id_operacion_corte) REFERENCES operacion_corte(id),
+    FOREIGN KEY (id_corte) REFERENCES corte(id)
+);
+
+-- Tabla para la produccion por hora actual
+CREATE TABLE produccion_actual (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    operario_id INT,
+    produccion_por_hora INT,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (operario_id) REFERENCES operario(id)
+);
+
+-- Tabla para el historial de produccion por hora
+CREATE TABLE historial_produccion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    operario_id INT,
+    produccion_por_hora INT,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (operario_id) REFERENCES operario(id)
+);
+create table readTimeOperaYNumOperarios(
+id INT AUTO_INCREMENT PRIMARY KEY,
+ total_operarios INT,
+   total_tiempo_estandar DOUBLE
+);
